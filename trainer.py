@@ -2,11 +2,16 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+import pandas_profiling
 
 # Training Dataset
 dataset = pd.read_csv('train.csv')
 X = dataset.iloc[:, :-1].values
 y = dataset.iloc[:, -1].values
+
+#EDA of training data
+profile=dataset.profile_report(title='EDA of Training Data')
+profile.to_file(output_file="eda_train.html")
 
 # SciKit Learn Preprocessing Library Import
 from sklearn.preprocessing import StandardScaler
